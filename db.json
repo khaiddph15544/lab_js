@@ -1,0 +1,122 @@
+{
+  "products": [
+    {
+      "product_name": "Đồng hồ nam Seiko 5 Quân Đội ",
+      "image": "http://res.cloudinary.com/dcalzi23m/image/upload/v1644680617/oq7ldygjrzksdct908tt.png",
+      "price": "1500000",
+      "quantity": "1000",
+      "discount": "10",
+      "desc": "Chính hãng",
+      "id": 1
+    },
+    {
+      "product_name": "Đồng hồ nam Hamilton Jazzmaste",
+      "image": "http://res.cloudinary.com/dcalzi23m/image/upload/v1644664268/jxg2yvbpgu7v1yeduvmw.png",
+      "price": "5490000",
+      "quantity": "1000",
+      "discount": "0",
+      "desc": "Chính hãng",
+      "id": 2
+    },
+    {
+      "product_name": "Đồng hồ nam Orient Automatic",
+      "image": "http://res.cloudinary.com/dcalzi23m/image/upload/v1644664315/osa4zjsb2tcppugjipmp.png",
+      "price": "2560000",
+      "quantity": "1000",
+      "discount": "15",
+      "desc": "Chính hãng",
+      "id": 3
+    },
+    {
+      "product_name": "Đồng hồ nam Citizen Automatic",
+      "image": "http://res.cloudinary.com/dcalzi23m/image/upload/v1644664363/aihxnmxzgacb1eoe6rg0.png",
+      "price": "5000000",
+      "quantity": "1000",
+      "discount": "5",
+      "desc": "Chính hãng",
+      "id": 4
+    },
+    {
+      "product_name": "Đồng hồ nữ Longines Master",
+      "image": "http://res.cloudinary.com/dcalzi23m/image/upload/v1644664429/aify7ddnc8lgxx3swfpe.png",
+      "price": "2690000",
+      "quantity": "1000",
+      "discount": "5",
+      "desc": "Chính hãng",
+      "id": 5
+    },
+    {
+      "product_name": "Đồng hồ nữ Daniel Wellington",
+      "image": "http://res.cloudinary.com/dcalzi23m/image/upload/v1644664812/uk3pdcz0tvstfl7qexeg.png",
+      "price": "2500000",
+      "quantity": "10",
+      "discount": "5",
+      "desc": "Chính hãng",
+      "id": 6
+    }
+  ],
+  "categories": [
+    {
+      "cate_name": "Hublot",
+      "id": 1
+    },
+    {
+      "cate_name": "Chanel",
+      "id": 2
+    },
+    {
+      "cate_name": "Rolex",
+      "id": 3
+    },
+    {
+      "cate_name": "Zenith",
+      "id": 4
+    },
+    {
+      "cate_name": "Piaget",
+      "id": 5
+    }
+  ],
+  "users": [
+    {
+      "email": "khaidang1123@gmail.com",
+      "password": "$2a$10$/kGwaDViYb2J.YtDT9JfJOriRxHf08rWbyTYiOPqOGkkKbiZxrfse",
+      "image": "http://res.cloudinary.com/dcalzi23m/image/upload/v1645204821/fi3v66tqpwrnief1qgpd.jpg",
+      "user_name": "khaidang",
+      "role": "1",
+      "id": 1
+    },
+    {
+      "email": "khanhnq@gmail.com",
+      "password": "$2a$10$B9PnxZp3YlcNoSfBvzXJf.wCXU05DzVzoyksf4oUIi6kG/t9IwP86",
+      "image": "http://res.cloudinary.com/dcalzi23m/image/upload/v1645204857/pebzrucdtwkklogpxzlh.jpg",
+      "user_name": "khanhnguyen",
+      "role": "0",
+      "id": 2
+    },
+    {
+      "email": "dangkhai12@gmail.com",
+      "password": "$2a$10$ymIkWez007.euSJJ/ejrf.h/XwjvJf/FiI5ZTfFft4j0C.c8xgl9O",
+      "image": "http://res.cloudinary.com/dcalzi23m/image/upload/v1645204928/vaj9izj6ydfnskqeod3d.jpg",
+      "user_name": "dangkhai",
+      "role": "1",
+      "id": 3
+    },
+    {
+      "email": "hanhnt@gmail.com",
+      "password": "$2a$10$c0FEJ.7vpue3YDf9jAm1H.z/JB.15bBuXGzrpo5GhpPF988t5tfVy",
+      "image": "http://res.cloudinary.com/dcalzi23m/image/upload/v1645204983/coduilnoi5ehex8uvhmb.jpg",
+      "user_name": "hanhnguyen",
+      "role": "1",
+      "id": 4
+    },
+    {
+      "email": "khaid1123@gmail.com",
+      "password": "$2a$10$B0fFOZddoGjebh22m5gF5uCFLtAZBqVANG1uC0br3aUmqjkUg5afm",
+      "image": "http://res.cloudinary.com/dcalzi23m/image/upload/v1645197996/wrmvfyickb1cdtzlfi3l.png",
+      "user_name": "iiiiiii",
+      "role": "1",
+      "id": 5
+    }
+  ]
+}
