@@ -1,9 +1,11 @@
 import axios from "axios";
+import { getAll } from "../../../api/category";
 import NavAdmin from "../../../components/admin/NavAdmin";
 import { add } from "../../../api/product";
 
 const AddProduct = {
-    print() {
+    async print() {
+        const { data } = await getAll();
         return `
             ${NavAdmin.print()}
             <h2 class="font-bold text-2xl my-5 text-center">Thêm mới sản phẩm</h2>
@@ -31,23 +33,34 @@ const AddProduct = {
                     </div>
                 </div>
                 <div class="flex flex-wrap -mx-3 mb-2">
-                    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
                         Price
                     </label>
                     <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="price" type="text" placeholder="15000">
                     </div>
-                    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
                         Quantity
                     </label>
                     <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="quantity" type="text" placeholder="10">
                     </div>
-                    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
+                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label class="mt-5 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
                         Discount
                     </label>
                     <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="discount" type="text" placeholder="10">
+                    </div>
+                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label class="mt-5 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
+                        Category name
+                    </label>
+                    <select id="cate_name" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                        <option class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">Choose category</option>
+                        ${data.map((e) => `
+                            <option value="${e.id}" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">${e.cate_name}</option>
+                        `).join("")}
+                    </select>
                     </div>
                 </div>
                 <div class="flex items-center border-b border-teal-500 py-2">
@@ -89,6 +102,7 @@ const AddProduct = {
                 price: document.querySelector("#price").value,
                 quantity: document.querySelector("#quantity").value,
                 discount: document.querySelector("#discount").value,
+                cate_name: document.querySelector("#cate_name").value,
                 desc: document.querySelector("#desc").value,
             }).then(() => window.location = "./");
         });

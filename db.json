@@ -1,58 +1,164 @@
 {
   "products": [
     {
-      "product_name": "Đồng hồ nam Seiko 5 Quân Đội ",
+      "product_name": "Hublot Tourbillon Sapphie",
       "image": "http://res.cloudinary.com/dcalzi23m/image/upload/v1644680617/oq7ldygjrzksdct908tt.png",
       "price": "1500000",
       "quantity": "1000",
       "discount": "10",
-      "desc": "Chính hãng",
+      "desc": "Đồng hồ Hublot Spirit Of Big Bang Tourbillon Sapphire Rainbow 42mm là sự hợp nhất giữa giá trị truyền thống và hiện đại, mang đến một trải nghiệm tuyệt vời đối với người đeo. Sự xuất hiện của đồng hồ trên cổ tay chủ sở hữu không chỉ cho những giá trị nhận biết thời gian, mà còn biểu tượng của một phong cách luôn hợp thời và là lời khẳng định cho đẳng cấp riêng.",
+      "cate_id": 1,
       "id": 1
     },
     {
-      "product_name": "Đồng hồ nam Hamilton Jazzmaste",
+      "product_name": "Hublot Spirit of Big Bang",
       "image": "http://res.cloudinary.com/dcalzi23m/image/upload/v1644664268/jxg2yvbpgu7v1yeduvmw.png",
       "price": "5490000",
       "quantity": "1000",
       "discount": "0",
-      "desc": "Chính hãng",
+      "desc": "Hublot Spirit Of Big Bang Titanium Ceramic 45mm, 601.NM.0173.LR chiếc đồng hồ này sở hữu một kích thước thuộc hàng khủng: 45mm cùng với chất liệu titanium siêu bền nhẹ và cứng cỗ máy này lại không quá nặng nhưng vẫn đầm tay.",
+      "cate_id": 1,
       "id": 2
     },
     {
-      "product_name": "Đồng hồ nam Orient Automatic",
+      "product_name": "Zenith Structural Tourbillon",
       "image": "http://res.cloudinary.com/dcalzi23m/image/upload/v1644664315/osa4zjsb2tcppugjipmp.png",
       "price": "2560000",
       "quantity": "1000",
       "discount": "15",
-      "desc": "Chính hãng",
+      "desc": "Graff Structural Tourbillon Skeleton Automatic mang mã hiệu MGSTO46TB được nhà sản xuất chế tác rất công phu với bộ vỏ được chế tác bằng chất liệu Platinum, mặt số có thiết kế Skeleton đầy hấp dẫn.",
+      "cate_id": 4,
       "id": 3
     },
     {
-      "product_name": "Đồng hồ nam Citizen Automatic",
+      "product_name": "Zenith defty el Primero",
       "image": "http://res.cloudinary.com/dcalzi23m/image/upload/v1644664363/aihxnmxzgacb1eoe6rg0.png",
       "price": "5000000",
       "quantity": "1000",
       "discount": "5",
-      "desc": "Chính hãng",
+      "desc": "DEFY El Primero 21 có lẽ là mẫu đồng hồ thú vị nhất được ra mắt cùng thời điểm với những anh em của mình vào năm 2017. Phải là những bậc thầy trong chế tác đồng hồ, Zenith mới có thể chế tạo ra chiếc đồng hồ tuyệt phẩm như vậy.",
+      "cate_id": 4,
       "id": 4
     },
     {
-      "product_name": "Đồng hồ nữ Longines Master",
+      "product_name": "Chanel Premiere",
       "image": "http://res.cloudinary.com/dcalzi23m/image/upload/v1644664429/aify7ddnc8lgxx3swfpe.png",
       "price": "2690000",
       "quantity": "1000",
       "discount": "5",
-      "desc": "Chính hãng",
+      "desc": "Mẫu đồng hồ Chanel Première mã hiệu H6126 với thiết kế đơn giản nhưng lại mang vẻ đẹp vô cùng sang trọng, đẳng cấp. Với vỏ từ 2 chất liệu vàng vàng 18k cùng dây cao su màu đen vừa mang lại cảm giác thoải mái, yên tâm vừa là một lời tuyên bố về phong cách đẳng cấp và quý phái của phái đẹp.",
+      "cate_id": 2,
       "id": 5
     },
     {
-      "product_name": "Đồng hồ nữ Daniel Wellington",
-      "image": "http://res.cloudinary.com/dcalzi23m/image/upload/v1644664812/uk3pdcz0tvstfl7qexeg.png",
+      "product_name": " Big Bang DJ Snake",
+      "image": "http://res.cloudinary.com/dcalzi23m/image/upload/v1645293934/wztcxrtjsmeh6whuwnz0.png",
+      "price": "3000000",
+      "quantity": "10",
+      "discount": "5",
+      "desc": "Hublot Big Bang DJ Snake 45mm là thành quả của sự hợp tác giữa nghệ sĩ người Pháp DJ Snake và thương hiệu đồng hồ Hublot. Thiết kế sở hữu vô số khía cạnh đặc biệt giống như người nghệ sĩ tài năng đã truyền cảm hứng cho nó. Sự xuất hiện của chiếc đồng hồ Hublot Big Bang DJ Snake 45mm như một điểm nhấn, nhấn mạnh vào sự năng động, thể thao và khác biệt của chủ sở hữu.",
+      "cate_id": 6,
+      "id": 6
+    },
+    {
+      "product_name": " Longines La Grande",
+      "image": "http://res.cloudinary.com/dcalzi23m/image/upload/v1645293873/dkiyjk3hkleh4jkckosv.png",
+      "price": "1600000",
+      "quantity": "1000",
+      "discount": "5",
+      "desc": "Bộ sưu tập đồng hồ Longines La grande classic que de Longines được vinh danh là bộ sưu tập của vẻ đẹp cổ điển vĩnh hằng. Mẫu đồng hồ Longines La Grande Classique L49084942 sử dụng màu xanh da trời sang trọng làm mặt số, được điêu khắc rất tinh xảo cùng số chỉ giờ La Mã.",
+      "cate_id": 5,
+      "id": 7
+    },
+    {
+      "product_name": "Hublot Orlinski White",
+      "image": "http://res.cloudinary.com/dcalzi23m/image/upload/v1645293828/sv0p9uufkt3vkvmktntu.png",
       "price": "2500000",
       "quantity": "10",
       "discount": "5",
-      "desc": "Chính hãng",
-      "id": 6
+      "desc": "Chiếc đồng hồ sẽ khiến người khác phải ngưỡng mộ và ghen tỵ với bạn bởi sức hấp dẫn không thể cưỡng lại đến từ gam màu đen mạnh mẽ từ phần mặt số, nam tính. Thay vì lớp vỏ được làm từ vàng 18k King Gold ở phiên bản này Hublot mang tới chất liệu là Titanium với đường kính 45 mm.",
+      "cate_id": 1,
+      "id": 8
+    },
+    {
+      "product_name": "Chanel J12",
+      "image": "http://res.cloudinary.com/dcalzi23m/image/upload/v1644664812/uk3pdcz0tvstfl7qexeg.png",
+      "price": "4000000",
+      "quantity": "1000",
+      "discount": "10",
+      "desc": "Chanel J12 XS H5237 với thiết kế \"siêu nhỏ\" và chất liệu sứ công nghệ cao với đường kính mặt số chỉ 19mm, đính 32 viên kim cương cắt sáng chói góp phần tôn lên nét quyến rũ nơi cổ tay người đẹp. Sự khác lạ của chất liệu đối với nữ giới càng làm tăng thêm hiệu ứng của gốm công nghệ cao màu trắng.",
+      "cate_id": 2,
+      "id": 9
+    },
+    {
+      "product_name": "Rolex Oyster Perpetual",
+      "image": "http://res.cloudinary.com/dcalzi23m/image/upload/v1645293785/oqge9h5gpjimf24jd7ot.png",
+      "price": "1800000",
+      "quantity": "1000",
+      "discount": "5",
+      "desc": "Rolex Datejust vẫn là dòng sản phẩm thu hút đông đảo sự chú ý của khách hàng trên toàn thế giới. Trong công nghệ chế tác đồng hồ, vàng mang tính chất sang trọng, quý phái, thường được sử dụng cho những chiếc đồng hồ thiết kế cổ điển còn thép mang đặc tính bền bỉ với độ chống chịu áp lực cao, dành cho những mẫu có tính chất trẻ trung, hiện đại. Nhận ra những đặc điểm này, ngay từ những năm 1930, Rolex đã kết hợp hai chất liệu vàng và thép tạo thành những mẫu đồng hồ sang trọng. Rolex Datejust 41mm 126334 là một chiếc đồng hồ như vậy.",
+      "cate_id": 3,
+      "id": 10
+    },
+    {
+      "product_name": "Zenith DEFY Zero ",
+      "image": "http://res.cloudinary.com/dcalzi23m/image/upload/v1645293761/lybiehxjgfsd0mye567j.png",
+      "price": "2500000",
+      "quantity": "10",
+      "discount": "5",
+      "desc": "Chiếc đồng hồ Zenith DEFY Zero G 95.9000.8812-78.R584 được thiết kế theo phong cách hiện đại với tông màu xám làm chủ đạo. Bộ vỏ titanium độ cứng cao có đường kính lên tới 44mm kết hợp dây đeo cao su màu xanh vô cùng sang trọng. Chiếc đồng hồ nổi bật với thiết kế skeleton bên trong toát lên vẻ đẹp của sự phức tạp cho cỗ máy",
+      "cate_id": 4,
+      "id": 11
+    },
+    {
+      "product_name": "Chanel Boy Friend Tweed",
+      "image": "http://res.cloudinary.com/dcalzi23m/image/upload/v1645293723/e66dhasacno37shsgnfn.png",
+      "price": "2250000",
+      "quantity": "1000",
+      "discount": "10",
+      "desc": "Chanel Boy Friend Tweed H6127, một chiếc đồng hồ nữ với sức quyến rũ nam tính, được thiết kế với cùng một tinh thần táo bạo. Với size nhỏ 21,5 x 27,9 mm, đồng hồ được chế tác bằng thép với lớp tráng men mô phỏng mẫu vải Tweed trong các sắc thái khác nhau của màu xám. ",
+      "cate_id": 2,
+      "id": 12
+    },
+    {
+      "product_name": "Zenith Pilot Montre",
+      "image": "http://res.cloudinary.com/dcalzi23m/image/upload/v1645293699/fxcxsyr2ea6vpkilu7oh.png",
+      "price": "180000",
+      "quantity": "1000",
+      "discount": "10",
+      "desc": "Chiếc đồng hồ ZENITH Pilot Montre D'Aeronef Type 20 Tourbillon Chronograph Rose Gold 48mm được thiết kế theo phong cách đồng hồ phi công điển hình của hãng rất được yêu thích. Đồng hồ với tông màu đen, bộ vỏ vàng hồng , nổi bật với thiết kế skeleton bên trong toát lên vẻ đẹp của sự phức tạp cho cỗ máy.",
+      "cate_id": 4,
+      "id": 13
+    },
+    {
+      "product_name": " Zenith ELITE Classic",
+      "image": "http://res.cloudinary.com/dcalzi23m/image/upload/v1645293662/xihbrlxh5gdpzgbesqjy.png",
+      "price": "1580000",
+      "quantity": "1000",
+      "discount": "15",
+      "desc": "Zenith Elite Classic Ultra-Thin (18229067901c498), có vỏ bằng vàng hồng 39mm 18k bao quanh mặt số bằng bạc sunray trên dây đeo cá sấu màu nâu với khóa bằng vàng hồng 18k. Các chức năng bao gồm giờ, phút và giây",
+      "cate_id": 4,
+      "id": 14
+    },
+    {
+      "product_name": "\t Rolex Yacht Master",
+      "image": "http://res.cloudinary.com/dcalzi23m/image/upload/v1645293612/cxaly8iciujiiltag33t.png",
+      "price": "4500000",
+      "quantity": "1000",
+      "discount": "5",
+      "desc": "Yacht- Master là dòng đồng hồ lịch lãm nhưng mang đậm chất thời trang và thể thao, dòng sản phẩm nổi bật này của thương hiệu Rolex lừng danh sẽ mang đến cho người sở hữu sự nổi bật và tự tin tuyệt đối trước đám đông. Rolex Yacht-Master 268655 Pave chính là một cái tên không thể bỏ qua.",
+      "cate_id": 3,
+      "id": 15
+    },
+    {
+      "product_name": "Big Bang Unico Magic",
+      "image": "http://res.cloudinary.com/dcalzi23m/image/upload/v1645293571/bb7zl9mhtdwdg4ftftji.png",
+      "price": "1800000",
+      "quantity": "1000",
+      "discount": "5",
+      "desc": "Mặt số skeleton không đơn giản chỉ là lộ máy mà đó còn là cả một bức tranh nghệ thuật. Chiếc Hublot Big Bang Unico Black Magic nổi bật vô cùng ngầu với bộ vỏ ceramic đen toàn bộ từ vành bezel, thân vỏ cho tới bộ khóa. Chất liệu ceramic nổi bật là một chất liệu hiện đại, trọng lượng nhẹ và có độ cứng rất cao.",
+      "cate_id": 6,
+      "id": 16
     }
   ],
   "categories": [
@@ -73,14 +179,18 @@
       "id": 4
     },
     {
-      "cate_name": "Piaget",
+      "cate_name": "Longines",
       "id": 5
+    },
+    {
+      "cate_name": "Bigbag",
+      "id": 6
     }
   ],
   "users": [
     {
       "email": "khaidang1123@gmail.com",
-      "password": "$2a$10$/kGwaDViYb2J.YtDT9JfJOriRxHf08rWbyTYiOPqOGkkKbiZxrfse",
+      "password": "$2a$10$aqtA9/cYuySYrnN9ze13d.ajt/jl78kbxiwsqIDOPuc/bx5bP1Lse",
       "image": "http://res.cloudinary.com/dcalzi23m/image/upload/v1645204821/fi3v66tqpwrnief1qgpd.jpg",
       "user_name": "khaidang",
       "role": "1",
@@ -117,6 +227,13 @@
       "user_name": "iiiiiii",
       "role": "1",
       "id": 5
+    },
+    {
+      "email": "khaidan452@gmail.com",
+      "password": "$2a$10$aqtA9/cYuySYrnN9ze13d.ajt/jl78kbxiwsqIDOPuc/bx5bP1Lse",
+      "user_name": "wew",
+      "role": 0,
+      "id": 6
     }
   ]
 }

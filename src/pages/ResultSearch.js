@@ -12,7 +12,7 @@ const ResultSearch = {
             }
         });
         return `
-            ${Header.print()}
+            ${await Header.print()}
             <div class="w-11/12 m-auto">
                 <h3 class="px-5 font-semibold text-emerald-700 text-2xl my-10">Tìm thấy <span class="font-bold text-black"> ${arrSearch.length} </span> sản phẩm với từ khóa "<span class="font-bold text-black">${name}</span>"</h3>
                 <div class="grid grid-cols-4">

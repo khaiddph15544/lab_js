@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getOne } from "../../../api/category";
 import { getAll, remove } from "../../../api/product";
 import NavAdmin from "../../../components/admin/NavAdmin";
 import reRender from "../../../utils/reRender";
@@ -38,13 +39,16 @@ const ProductShow = {
                       Discription
                     </th>
                     <th scope="col" class="px-6 py-3 text-left text-sm font-bold text-gray-500 uppercase tracking-wider">
+                      Category name
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-left text-sm font-bold text-gray-500 uppercase tracking-wider">
                       Action
                     </th>
                   </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
                   ${data.map((e) => `
-                        <tr>
+                      <tr>
                         <td class="px-6 py-4">
                           ${e.id}
                         </td>
@@ -63,8 +67,11 @@ const ProductShow = {
                         <td class="px-4 py-4">
                           ${e.discount} %
                         </td>
-                        <td class="px-4 py-4">
+                        <td class="px-4 py-4 w-1/5">
                           ${e.desc}
+                        </td>
+                        <td class="px-4 py-4">
+                         ${e.cate_id}
                         </td>
                         <td class="px-4 py-4 text-sm font-bold">
                           <a href="/admin/products/update/id=${e.id}" class="text-indigo-600 hover:text-indigo-900">Edit</a>

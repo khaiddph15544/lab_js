@@ -5,14 +5,14 @@ import Header from "../components/Header";
 import { minus, plus, removeItemInCart } from "../utils/cart";
 
 const CartTheme = {
-    print() {
+    async print() {
         const getCart = JSON.parse(localStorage.getItem("cart"));
         let tam_tinh = 0;
         getCart.forEach((e) => {
             tam_tinh += ((e.price - (e.price * e.discount / 100)) * e.quantity);
         });
         return `
-        ${Header.print()}
+        ${await Header.print()}
         <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">

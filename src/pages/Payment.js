@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import reRender from "../utils/reRender";
 
 const Payment = {
-    print() {
+    async print() {
         const getUser = JSON.parse(localStorage.getItem("account"));
         const dataCart = JSON.parse(localStorage.getItem("cart"));
         let tam_tinh = 0;
@@ -15,7 +15,7 @@ const Payment = {
             <style>
                  font-family:roboto
             </style>
-            ${Header.print()}
+            ${await Header.print()}
                 <div class="grid grid-cols-2 w-11/12 m-auto my-10">
                     <div class="m-auto w-3/4">
                         <h2 class="block border-b border-gray-600 outline-none text-3xl py-3 mt-10">Thông tin thanh toán</h2>

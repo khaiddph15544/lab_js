@@ -2,7 +2,7 @@ import reRender from "../utils/reRender";
 import Nav from "./Nav";
 
 const Header = {
-    print() {
+    async print() {
         const dataAccount = JSON.parse(localStorage.getItem("account"));
         const getCart = JSON.parse(localStorage.getItem("cart"));
         const checkUser = dataAccount ? `Xin chào: ${dataAccount.user_name}` : "Tài khoản";
@@ -48,10 +48,10 @@ const Header = {
                         <img src="https://res.cloudinary.com/dcalzi23m/image/upload/v1644595451/js_advanced/logo_anjssy.png" class="w-full" />
                     </div>
                     <div class="py-3">
-                        ${Nav.print()}
+                        ${await Nav.print()}
                     </div>
                     <div class="py-3 relative flex items-center">
-                        <input type="text" id="search_content" class="border border-slate-500 rounded-3xl outline-none py-2 pl-10" placeholder="Tìm kiếm tại đây..." />
+                        <input type="text" id="search_content" class="border border-slate-500 rounded-3xl outline-none py-2 px-10 indent-1" placeholder="Tìm kiếm tại đây..." />
                         <svg xmlns="http://www.w3.org/2000/svg" id="btn_search" class="h-8 w-8 inline text-slate-500 cursor-pointer absolute right-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                         </svg>
@@ -77,6 +77,14 @@ const Header = {
                 window.location = `/search/${searchContent}`;
             });
         }
+
+        const btnCate = document.querySelector("#categories");
+        btnCate.onmouseover = () => {
+            btnCate.className += " active-cate";
+        };
+        btnCate.onmouseout = () => {
+            btnCate.className = "inline";
+        };
     },
 };
 
