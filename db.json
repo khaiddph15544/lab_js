@@ -274,48 +274,69 @@
   ],
   "orders": [
     {
+      "buyer_name": "Khai Dang",
       "address": "80/47 Xuân Phương",
       "phone_number": "0962597441",
-      "total_price": "18035000",
+      "total_price": "21206000",
       "id": 1
     },
     {
-      "address": "Đoan Hùng Phú Thọ",
-      "phone_number": "0256897412",
-      "total_price": "21206000",
+      "buyer_name": "Khánh Nguyễn",
+      "address": "Doan Hung",
+      "phone_number": "0654664991",
+      "total_price": "5056000",
       "id": 2
+    },
+    {
+      "buyer_name": "Khai Dang",
+      "address": "80/47 Xuân Phương",
+      "phone_number": "0962597441",
+      "total_price": "2880000",
+      "id": 3
     }
   ],
   "order_detail": [
     {
+      "product_id": 11,
       "order_id": 1,
       "price": 2375000,
       "quantity": 3,
       "id": 1
     },
     {
+      "product_id": 8,
       "order_id": 1,
-      "price": 2176000,
+      "price": 2375000,
       "quantity": 5,
       "id": 2
     },
     {
-      "order_id": 2,
-      "price": 2375000,
-      "quantity": 3,
+      "product_id": 3,
+      "order_id": 1,
+      "price": 2176000,
+      "quantity": 1,
       "id": 3
     },
     {
+      "product_id": 3,
       "order_id": 2,
       "price": 2176000,
       "quantity": 1,
       "id": 4
     },
     {
+      "product_id": 6,
       "order_id": 2,
-      "price": 2375000,
-      "quantity": 5,
+      "price": 2850000,
+      "quantity": 1,
       "id": 5
+    },
+    {
+      "product_id": 6,
+      "order_id": 3,
+      "price": 2850000,
+      "quantity": 1,
+      "id": 6
     }
   ]
 }

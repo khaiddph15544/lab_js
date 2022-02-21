@@ -17,7 +17,9 @@ import UpdateCate from "./pages/admin/categories/update";
 import UpdateUser from "./pages/admin/users/update";
 import ResultSearch from "./pages/ResultSearch";
 import listProduct from "./pages/listProduct";
-import OrderShow from "./pages/admin/comments";
+import OrderShow from "./pages/admin/orders";
+import CommentShow from "./pages/admin/comments";
+import OrderDetailShow from "./pages/admin/orders/detail";
 
 const route = new Navigo("/", { linksSelector: "a" });
 
@@ -86,7 +88,7 @@ route.on({
         render(UpdateCate, data.id);
     },
     "/admin/comments": () => {
-        render(OrderShow);
+        render(CommentShow);
     },
     "/signup": () => {
         render(Signup);
@@ -105,6 +107,12 @@ route.on({
     },
     "/category/id=:id": ({ data }) => {
         render(listProduct, data.id);
+    },
+    "/admin/orders": () => {
+        render(OrderShow);
+    },
+    "/admin/order_detail/id=:id": ({data}) => {
+        render(OrderDetailShow, data.id);
     },
 });
 

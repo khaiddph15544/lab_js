@@ -3,7 +3,7 @@ import { getAll as getAllUser } from "../../../api/user";
 import { getAll as getAllProduct } from "../../../api/product";
 import NavAdmin from "../../../components/admin/NavAdmin";
 
-const OrderShow = {
+const CommentShow = {
   async print() {
     const getComment = await getAll()
     const getProduct = await getAllProduct()
@@ -120,4 +120,4 @@ const OrderShow = {
   // },
 };
 
-export default OrderShow;
+export default CommentShow;

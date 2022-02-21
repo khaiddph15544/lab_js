@@ -115,22 +115,25 @@ const Payment = {
             // let tam_tinh = 0;
             add({
                 user_id: localStorage.getItem("account").user_id,
+                buyer_name: fullname,
                 address: address,
                 phone_number: phone_number,
-                total_price: document.querySelector("#tong_tien").value.replace(/\D/g,'')
+                total_price: document.querySelector("#tong_tien").value.replace(/\D/g, '')
             }).then((res) => {
                 dataCart.forEach((e) => {
                     // tam_tinh += (e.price - (e.price * e.discount / 100)) * e.quantity;
-                   addDetail({
-                       order_id: res.data.id,
-                       product_id: e.product_id,
-                       price: e.price - (e.price * e.discount / 100),
-                       quantity: e.quantity,
-                   })
-    
-                });    
+                    addDetail({
+                        product_id: e.id,
+                        order_id: res.data.id,
+
+                        price: e.price - (e.price * e.discount / 100),
+                        quantity: e.quantity,
+                    })
+
+                });
             }).then(() => toastr.success("Đặt hàng thành công!"))
-            
+            .then(setTimeout(() => window.location = "/", 2000))
+
 
         })
     },
