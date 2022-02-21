@@ -1,12 +1,12 @@
-import toastr from "toastr";
-import "toastr/build/toastr.min.css";
-import { signup } from "../api/user";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import toastr from 'toastr';
+import 'toastr/build/toastr.min.css';
+import { signup } from '../api/user';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const Signup = {
-    print() {
-        return `
+  print() {
+    return `
         ${Header.print()}
         <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-md w-full space-y-8">
@@ -59,28 +59,28 @@ const Signup = {
   </div>
   ${Footer.print()}
   `;
-    },
-    afterRender() {
-        const signupForm = document.querySelector("#signup-form");
-        signupForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-            try {
-                signup({
-                    id,
-                    email: document.querySelector("#email").value,
-                    user_name: document.querySelector("#user_name").value,
-                    password: document.querySelector("#password").value,
-                    role: 0,
-                });
-                toastr.success("Đăng ký thành công!");
-                setTimeout(() => {
-                    window.location = "/signin";
-                }, 3000);
-            } catch (error) {
-                toastr.error("Có lỗi xảy ra, Vui lòng thử lại!");
-            }
+  },
+  afterRender() {
+    const signupForm = document.querySelector('#signup-form');
+    signupForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      try {
+        signup({
+          id,
+          email: document.querySelector('#email').value,
+          user_name: document.querySelector('#user_name').value,
+          password: document.querySelector('#password').value,
+          role: 0,
         });
-    },
+        toastr.success('Đăng ký thành công!');
+        setTimeout(() => {
+          window.location = '/signin';
+        }, 3000);
+      } catch (error) {
+        toastr.error('Có lỗi xảy ra, Vui lòng thử lại!');
+      }
+    });
+  },
 };
 
 export default Signup;

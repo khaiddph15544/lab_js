@@ -1,17 +1,17 @@
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import reRender from "../utils/reRender";
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import reRender from '../utils/reRender';
 
 const Payment = {
-    print() {
-        const getUser = JSON.parse(localStorage.getItem("account"));
-        const dataCart = JSON.parse(localStorage.getItem("cart"));
-        let tam_tinh = 0;
-        dataCart.forEach((e) => {
-            tam_tinh += (e.price - (e.price * e.discount / 100)) * e.quantity;
-            console.log(e.price - (e.price * e.discount / 100) * e.quantity);
-        });
-        return `
+  print() {
+    const getUser = JSON.parse(localStorage.getItem('account'));
+    const dataCart = JSON.parse(localStorage.getItem('cart'));
+    let tam_tinh = 0;
+    dataCart.forEach((e) => {
+      tam_tinh += (e.price - (e.price * e.discount / 100)) * e.quantity;
+      console.log(e.price - (e.price * e.discount / 100) * e.quantity);
+    });
+    return `
             <style>
                  font-family:roboto
             </style>
@@ -40,12 +40,12 @@ const Payment = {
                                     <div>
                                        <span>x</span> <span> ${e.quantity}</span>
                                     </div>
-                                    <span>${new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(e.price - (e.price * e.discount / 100))}</span>
+                                    <span>${new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(e.price - (e.price * e.discount / 100))}</span>
                                 </div>
-                            `).join("")}
+                            `).join('')}
                             <div class="flex justify-between font-semibold border-b border-gray-600 outline-none py-3 mt-10 text-xl">
                                 <span>Tạm tính</span>
-                                <input type="text" id="tam_tinh" value="${new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(tam_tinh)}" class="outline-none text-right text-red-600 font-semibold" readonly />
+                                <input type="text" id="tam_tinh" value="${new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(tam_tinh)}" class="outline-none text-right text-red-600 font-semibold" readonly />
                             </div>
                             
                             <div class="flex justify-between font-semibold border-b border-gray-600 outline-none py-3 mt-10 text-xl">
@@ -54,7 +54,7 @@ const Payment = {
                             </div>
                             <div class="flex justify-between font-semibold border-b border-gray-600 outline-none py-3 mt-10 text-xl">
                                 <span>Tổng tiền</span>
-                                <input type="text" id="tong_tien" value="${new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(tam_tinh + 30000)}" class="outline-none text-red-600 font-semibold text-right" readonly />
+                                <input type="text" id="tong_tien" value="${new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(tam_tinh + 30000)}" class="outline-none text-red-600 font-semibold text-right" readonly />
                             </div>
                             <button class="my-10 border border-white m-auto block px-20 py-2 bg-orange-600 font-semibold text-white">ĐẶT HÀNG</button>
                         </div>
@@ -62,9 +62,9 @@ const Payment = {
                 </div>
             ${Footer.print()}
         `;
-    },
-    afterRender() {
-        Header.afterRender();
-    },
+  },
+  afterRender() {
+    Header.afterRender();
+  },
 };
 export default Payment;

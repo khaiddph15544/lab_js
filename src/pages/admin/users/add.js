@@ -9,19 +9,19 @@ const AddUser = {
         return `
             ${NavAdmin.print()}
             <h2 class="font-bold text-2xl my-5 text-center">Thêm mới người dùng</h2>
-            <form class="w-full max-w-4xl m-auto" method="POST" id="form-add-user">
+            <form action="" class="w-full max-w-4xl m-auto" method="POST" id="form-add-user">
                 <div class="flex flex-wrap -mx-3 mb-6">
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                         Email
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text"  id="email" name="email">
+                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" id="email" name="email" placeholder="Jane">
                     </div>
                     <div class="w-full md:w-1/2 px-3">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                         Image
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="file" id="image" name="image">
+                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="file" id="image" name="image" placeholder="Doe">
                     </div>
                 </div>
                 <div class="flex flex-wrap -mx-3 mb-6">
@@ -47,13 +47,13 @@ const AddUser = {
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                         Password
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="password" id="password" name="password">
+                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="password" name="password" type="password">
                     </div>
                     <div class="w-full md:w-1/2 px-3">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                         RePassword
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="password" id="rePassword" name="rePassword">
+                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="rePassword" name="rePassword" type="password">
                     </div>
                 </div>
                 <div class="flex items-center border-b border-teal-500 py-2">
@@ -70,38 +70,90 @@ const AddUser = {
     },
 
     afterRender() {
-        const formAdd = document.querySelector("#form-add-user");
-        const CLOUDINARY_PRESET_KEY = "phczuaaq";
-        const CLOUDINARY_API_URL = "https://api.cloudinary.com/v1_1/dcalzi23m/image/upload";
-
-        formAdd.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            const file = document.querySelector("#image").files[0];
-            const formData = new FormData();
-            formData.append("file", file);
-            formData.append("upload_preset", CLOUDINARY_PRESET_KEY);
-
-            // call api để đẩy ảnh lên cloudinary
-            // Cloudinary sẽ trả về một object chứa đường link lưu trữ ảnh online
-            const { data } = await axios.post(CLOUDINARY_API_URL, formData, {
-                headers: {
-                    "Content-Type": "application/form-data",
+        $("#form-add-user").validate({
+            onfocusout: false,
+            onkeyup: false,
+            onclick: false,
+            rules: {
+                email: {
+                    required: true,
+                    email: true,
                 },
-            });
-            // call api để post dữ liệu
-            const email = document.querySelector("#email").value;
-            const getData = await getAll();
-            const checkExist = getData.data.find((element) => element.email == email);
-            if (!checkExist) {
-                signup({
-                    email: document.querySelector("#email").value,
-                    image: data.url,
-                    user_name: document.querySelector("#user_name").value,
-                    password: document.querySelector("#password").value,
-                    role: document.querySelector("#role").value,
-                }).then(() => window.location = "./");
-            } else {
-                toastr.error("Email đã tồn tại");
+                image: {
+                    required: true,
+                },
+                user_name: {
+                    required: true,
+                    minlength: 6,
+                },
+                role: {
+                    required: true,
+                },
+                password: {
+                    required: true,
+                    minlength: 8,
+                },
+                rePassword: {
+                    required: true,
+                    equalTo: "#password",
+                },
+            },
+            messages: {
+                email: {
+                    required: "Bạn phải nhập email!",
+                    email: "Email không đúng định dạng!",
+                },
+                image: {
+                    required: "Bạn chưa chọn ảnh đại diện!",
+                },
+                user_name: {
+                    required: "Bạn phải nhập tên tài khoản!",
+                    minlength: "Tên tài khoản phải lớn hơn 6 kí tự!",
+                },
+                role: {
+                    required: "Bạn phải chọn vai trò!",
+                },
+                password: {
+                    required: "Bạn phải nhập mật khẩu!",
+                    minlength: "Mật khẩu phải lớn hơn 8 kí tự",
+                },
+                rePassword: {
+                    required: "Bạn phải nhập lại mật khẩu!",
+                    equalTo: "Nhập lại mật khẩu không khớp",
+                },
+            },
+            async submitHandler() {
+                const CLOUDINARY_PRESET_KEY = "phczuaaq";
+                const CLOUDINARY_API_URL = "https://api.cloudinary.com/v1_1/dcalzi23m/image/upload";
+
+                const file = document.querySelector("#image").files[0];
+                const formData = new FormData();
+                formData.append("file", file);
+                formData.append("upload_preset", CLOUDINARY_PRESET_KEY);
+
+                // call api để đẩy ảnh lên cloudinary
+                // Cloudinary sẽ trả về một object chứa đường link lưu trữ ảnh online
+                const { data } = await axios.post(CLOUDINARY_API_URL, formData, {
+                    headers: {
+                        "Content-Type": "application/form-data",
+                    },
+                });
+                // call api để post dữ liệu
+                const email = document.querySelector("#email").value;
+                const getData = await getAll();
+                const checkExist = getData.data.find((element) => element.email == email);
+                if (!checkExist) {
+                    signup({
+                        email: document.querySelector("#email").value,
+                        image: data.url,
+                        user_name: document.querySelector("#user_name").value,
+                        password: document.querySelector("#password").value,
+                        role: document.querySelector("#role").value,
+                    }).then(() => toastr.success("Thêm mới người dùng thành công"))
+                    .then(setTimeout(() => window.location = "./", 2000));
+                } else {
+                    toastr.error("Email đã tồn tại");
+                };
             }
         });
     },

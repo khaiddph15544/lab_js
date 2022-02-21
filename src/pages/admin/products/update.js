@@ -1,3 +1,5 @@
+import toastr from "toastr";
+import "toastr/build/toastr.min.css";
 import axios from "axios";
 import NavAdmin from "../../../components/admin/NavAdmin";
 import { getOne, update } from "../../../api/product";
@@ -25,14 +27,14 @@ const UpdateProduct = {
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                         Product name
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="product_name" type="text" value="${data.product_name}" placeholder="Jane">
+                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="product_name" name="product_name" type="text" value="${data.product_name}" placeholder="Jane">
                     </div>
                     
                     <div class="w-full px-3">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                         Description
                     </label>
-                    <textarea name="" id="desc" cols="30" rows="10" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">${data.desc}</textarea>
+                    <textarea name="desc" id="desc" cols="30" rows="10" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">${data.desc}</textarea>
                     </div>
                 </div>
                 <div class="flex flex-wrap -mx-3 mb-2">
@@ -40,19 +42,19 @@ const UpdateProduct = {
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
                         Price
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="price" value="${data.price}" type="text" placeholder="15000">
+                    <input name="price" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="price" value="${data.price}" type="text" placeholder="15000">
                     </div>
                     <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
                         Quantity
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="quantity" value="${data.quantity}" type="text" placeholder="10">
+                    <input name="quantity" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="quantity" value="${data.quantity}" type="text" placeholder="10">
                     </div>
                     <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
                         Discount
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="discount" value="${data.discount}" type="text" placeholder="10">
+                    <input name="discount" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="discount" value="${data.discount}" type="text" placeholder="10">
                     </div>
                 </div>
                 <div class="flex items-center border-b border-teal-500 py-2">
@@ -69,12 +71,58 @@ const UpdateProduct = {
     },
 
     afterRender(updateId) {
-        const formUpdate = document.querySelector("#form-update-product");
-        const CLOUDINARY_PRESET_KEY = "phczuaaq";
-        const CLOUDINARY_API_URL = "https://api.cloudinary.com/v1_1/dcalzi23m/image/upload";
-        formUpdate.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            const file = document.querySelector("#image").files[0];
+        $("#form-update-product").validate({
+            rules: {
+                product_name: {
+                    required: true,
+                },
+                desc: {
+                    required: true,
+                },
+                price: {
+                    required: true,
+                    digits: true,
+                },
+                quantity: {
+                    required: true,
+                    digits: true,
+                },
+                discount: {
+                    required: true,
+                    digits: true,
+                },
+                cate_name: {
+                    required: true,
+                },
+            },
+            messages: {
+                product_name: {
+                    required: "Bạn phải nhập tên sản phẩm!",
+                },
+                desc: {
+                    required: "Bạn phải nhập mô tả sản phẩm!",
+                },
+                price: {
+                    required: "Bạn phải nhập giá sản phẩm!",
+                    digits: "Giá phải là số dương!",
+                },
+                quantity: {
+                    required: "Bạn phải nhập số lượng sản phẩm trong kho!",
+                    digits: "Số lượng phải là số dương!",
+                },
+                discount: {
+                    required: "Bạn phải nhập giảm giá sản phẩm!",
+                    digits: "Trường giảm giá phải là số dương!",
+                },
+                cate_name: {
+                    required: "Bạn phải chọn danh mục của sản phẩm!",
+                },
+            },
+            async submitHandler() {
+                const CLOUDINARY_PRESET_KEY = "phczuaaq";
+                const CLOUDINARY_API_URL = "https://api.cloudinary.com/v1_1/dcalzi23m/image/upload";
+
+                const file = document.querySelector("#image").files[0];
             const formData = new FormData();
             formData.append("file", file);
             formData.append("upload_preset", CLOUDINARY_PRESET_KEY);
@@ -97,7 +145,9 @@ const UpdateProduct = {
                 discount: document.querySelector("#discount").value,
                 desc: document.querySelector("#desc").value,
                 id: updateId,
-            }).then(() => window.location = "../");
+            }).then(() => toastr.success("Cập nhật sản phẩm thành công"))
+            .then(setTimeout(() => window.location = "../", 2000));
+            },
         });
     },
 };

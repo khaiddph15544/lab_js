@@ -1,12 +1,12 @@
-import toastr from "toastr";
-import "toastr/build/toastr.min.css";
-import { signin } from "../api/user";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import toastr from 'toastr';
+import 'toastr/build/toastr.min.css';
+import { signin } from '../api/user';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const Signin = {
-    print() {
-        return `
+  print() {
+    return `
         ${Header.print()}
         <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-md w-full space-y-8">
@@ -66,27 +66,26 @@ const Signin = {
   </div>
     ${Footer.print()}
   `;
-    },
-    afterRender() {
-        const siginForm = document.querySelector("#signin-form");
-        siginForm.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            try {
-                const { data } = await signin({
-                    email: document.querySelector("#email").value,
-                    password: document.querySelector("#password").value,
-                });
-                localStorage.setItem("account", JSON.stringify(data.user));
-                toastr.success("Đăng nhập thành công!");
-                setTimeout(() => {
-                    window.location = document.referrer;
-                }, 2000);
-            } catch (error) {
-                toastr.error(`Thất bại! ${error.response.data}`);
-            }
-            let 
+  },
+  afterRender() {
+    const siginForm = document.querySelector('#signin-form');
+    siginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      try {
+        const { data } = await signin({
+          email: document.querySelector('#email').value,
+          password: document.querySelector('#password').value,
         });
-    },
+        localStorage.setItem('account', JSON.stringify(data.user));
+        toastr.success('Đăng nhập thành công!');
+        setTimeout(() => {
+          window.location = document.referrer;
+        }, 2000);
+      } catch (error) {
+        toastr.error(`Thất bại! ${error.response.data}`);
+      }
+    });
+  },
 };
 
 export default Signin;

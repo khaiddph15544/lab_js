@@ -1,3 +1,5 @@
+import toastr from "toastr";
+import "toastr/build/toastr.min.css";
 import NavAdmin from "../../../components/admin/NavAdmin";
 import { add } from "../../../api/category";
 
@@ -27,15 +29,25 @@ const AddCate = {
             </form>
         `;
     },
-
     afterRender() {
-        const formAdd = document.querySelector("#form-add-cate");
-
-        formAdd.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            add({
-                cate_name: document.querySelector("#cate_name").value,
-            }).then(() => window.location = "./");
+        $("#form-add-cate").validate({
+            rules: {
+                cate_name: {
+                    required: true,
+                },
+            },
+            messages: {
+                cate_name: {
+                    required: "Bạn phải nhập tên danh mục",
+                },
+            },
+            submitHandler: () => {
+                add({
+                    cate_name: document.querySelector("#cate_name").value,
+                })
+                    .then(() => toastr.success("Thêm mới danh mục thành công"))
+                    .then(setTimeout(() => window.location = "./", 2000));
+            },
         });
     },
 };

@@ -1,3 +1,5 @@
+import toastr from "toastr";
+import "toastr/build/toastr.min.css";
 import NavAdmin from "../../../components/admin/NavAdmin";
 import { getOne, update } from "../../../api/category";
 
@@ -13,7 +15,7 @@ const UpdateCate = {
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
                             Category name
                         </label>
-                        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="cate_name" type="text" value="${data.cate_name}">
+                        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="cate_name" name="cate_name" type="text" value="${data.cate_name}">
                         </div>
                     </div>
                     <div class="flex items-center border-b border-teal-500 py-2">
@@ -30,13 +32,24 @@ const UpdateCate = {
     },
 
     afterRender(updateId) {
-        const formUpdate = document.querySelector("#form-update-cate");
-        formUpdate.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            update({
-                cate_name: document.querySelector("#cate_name").value,
-                id: updateId,
-            }).then(() => window.location = "../");
+        $("#form-update-cate").validate({
+            rules: {
+                cate_name: {
+                    required: true,
+                },
+            },
+            messages: {
+                cate_name: {
+                    required: "Bạn phải nhập tên danh mục",
+                },
+            },
+            submitHandler: () => {
+                update({
+                    cate_name: document.querySelector("#cate_name").value,
+                    id: updateId,
+                }).then(() => toastr.success("Cập nhật danh mục thành công"))
+                  .then(setTimeout(() => window.location = "../", 2000));
+            }, 
         });
     },
 };

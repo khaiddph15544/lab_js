@@ -44,17 +44,17 @@ const UpdateUser = {
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                         User name
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="user_name" type="text" value="${data.user_name}">
+                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="user_name" name="user_name" type="text" value="${data.user_name}">
 
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                         Email
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="email" type="text" value="${data.email}">
+                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="email" name="email" type="text" value="${data.email}">
 
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                         Password
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="password" type="text" value="${data.password}">
+                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="password" name="password" type="text" value="${data.password}">
                     </div>
                     <div class="w-full md:w-1/2 px-3">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
@@ -80,39 +80,92 @@ const UpdateUser = {
     },
 
     afterRender(updateId) {
-        const formAdd = document.querySelector("#form-update-user");
-        const CLOUDINARY_PRESET_KEY = "phczuaaq";
-        const CLOUDINARY_API_URL = "https://api.cloudinary.com/v1_1/dcalzi23m/image/upload";
+        $("#form-update-user").validate({
+            onfocusout: false,
+            onkeyup: false,
+            onclick: false,
+            rules: {
+                email: {
+                    required: true,
+                    email: true,
+                },
+                image: {
+                    required: true,
+                },
+                user_name: {
+                    required: true,
+                    minlength: 6,
+                },
+                role: {
+                    required: true,
+                },
+                password: {
+                    required: true,
+                    minlength: 8,
+                },
+                rePassword: {
+                    required: true,
+                    equalTo: "#password",
+                },
+            },
+            messages: {
+                email: {
+                    required: "Bạn phải nhập email!",
+                    email: "Email không đúng định dạng!",
+                },
+                image: {
+                    required: "Bạn chưa chọn ảnh đại diện!",
+                },
+                user_name: {
+                    required: "Bạn phải nhập tên tài khoản!",
+                    minlength: "Tên tài khoản phải lớn hơn 6 kí tự!",
+                },
+                role: {
+                    required: "Bạn phải chọn vai trò!",
+                },
+                password: {
+                    required: "Bạn phải nhập mật khẩu!",
+                    minlength: "Mật khẩu phải lớn hơn 8 kí tự",
+                },
+                rePassword: {
+                    required: "Bạn phải nhập lại mật khẩu!",
+                    equalTo: "Nhập lại mật khẩu không khớp",
+                },
+            },
+            async submitHandler() {
+                const CLOUDINARY_PRESET_KEY = "phczuaaq";
+                const CLOUDINARY_API_URL = "https://api.cloudinary.com/v1_1/dcalzi23m/image/upload";
 
-        formAdd.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            const file = document.querySelector("#image").files[0];
-            const formData = new FormData();
-            formData.append("file", file);
-            formData.append("upload_preset", CLOUDINARY_PRESET_KEY);
+                const file = document.querySelector("#image").files[0];
+                const formData = new FormData();
+                formData.append("file", file);
+                formData.append("upload_preset", CLOUDINARY_PRESET_KEY);
 
-            let img = "";
-            if (file !== undefined) {
-                const { data } = await axios.post(CLOUDINARY_API_URL, formData, {
-                    headers: {
-                        "Content-Type": "application/form-data",
-                    },
-                });
-                img = data.url;
-            } else {
-                img = document.querySelector("#old_image").value;
+                let img = "";
+                if (file !== undefined) {
+                    const { data } = await axios.post(CLOUDINARY_API_URL, formData, {
+                        headers: {
+                            "Content-Type": "application/form-data",
+                        },
+                    });
+                    img = data.url;
+                } else {
+                    img = document.querySelector("#old_image").value;
+                }
+
+                // call api để post dữ liệu
+                update({
+                    email: document.querySelector("#email").value,
+                    password: document.querySelector("#password").value,
+                    image: img,
+                    user_name: document.querySelector("#user_name").value,
+                    role: document.querySelector("#role").value,
+                    id: updateId,
+                }).then(() => toastr.success("Cập nhật người dùng thành công"))
+                .then(setTimeout(() => window.location = "../", 2000));
             }
-
-            // call api để post dữ liệu
-            update({
-                email: document.querySelector("#email").value,
-                password: document.querySelector("#password").value,
-                image: img,
-                user_name: document.querySelector("#user_name").value,
-                role: document.querySelector("#role").value,
-                id: updateId,
-            }).then(() => window.location = "../");
         });
+
     },
 };
 
