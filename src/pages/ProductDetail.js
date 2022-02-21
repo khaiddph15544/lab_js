@@ -46,7 +46,6 @@ const ProductDetail = {
         })
       }
     })
-    console.log(arrCommentById)
 
     return `
             ${await Header.print()}

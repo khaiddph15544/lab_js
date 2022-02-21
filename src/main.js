@@ -17,6 +17,7 @@ import UpdateCate from "./pages/admin/categories/update";
 import UpdateUser from "./pages/admin/users/update";
 import ResultSearch from "./pages/ResultSearch";
 import listProduct from "./pages/listProduct";
+import OrderShow from "./pages/admin/comments";
 
 const route = new Navigo("/", { linksSelector: "a" });
 
@@ -83,6 +84,9 @@ route.on({
     },
     "/admin/categories/update/id=:id": ({ data }) => {
         render(UpdateCate, data.id);
+    },
+    "/admin/comments": () => {
+        render(OrderShow);
     },
     "/signup": () => {
         render(Signup);
