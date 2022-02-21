@@ -230,46 +230,39 @@
   ],
   "comments": [
     {
-      "content": "Sản phẩm tốt",
-      "create_at": "2021-12-01 14:37:57",
-      "user_id": 1,
-      "product_id": 3,
+      "content": "a",
+      "create_at": "2022-03-21T19:24:24.000Z",
+      "user_id": 4,
+      "product_id": "3",
       "id": 1
     },
     {
-      "content": "Tốt",
-      "create_at": "2021-12-01 14:39:57",
-      "user_id": 1,
-      "product_id": 3,
+      "content": "sản phẩm tốt",
+      "create_at": "2022-03-21T19:24:50.000Z",
+      "user_id": 4,
+      "product_id": "2",
       "id": 2
     },
     {
-      "content": "Không tốt lắm",
-      "create_at": "2021-12-01 14:39:57",
-      "user_id": 1,
-      "product_id": 15,
+      "content": "sản phẩm đẹp giá phù hợp",
+      "create_at": "2022-03-21T19:25:18.000Z",
+      "user_id": 4,
+      "product_id": "6",
       "id": 3
     },
     {
-      "content": "a",
-      "create_at": "2021-12-01 14:37:57",
-      "user_id": 3,
-      "product_id": 3,
+      "content": "sản phẩm tốt",
+      "create_at": "2022-03-21T19:25:48.000Z",
+      "user_id": 1,
+      "product_id": "2",
       "id": 4
     },
     {
-      "content": "tttt",
-      "create_at": "2021-12-01 14:37:57",
+      "content": "giá rất rẻ",
+      "create_at": "2022-03-21T19:25:57.000Z",
       "user_id": 1,
-      "product_id": "3",
+      "product_id": "2",
       "id": 5
-    },
-    {
-      "content": "sản phẩm tốt",
-      "create_at": "2021-12-01 14:37:57",
-      "user_id": 4,
-      "product_id": "1",
-      "id": 6
     }
   ]
 }

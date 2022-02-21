@@ -14,11 +14,34 @@ const ProductDetail = {
     const getComment = await getAll()
     const getUser = await getAllUser()
     let arrCommentById = []
+    const today = new Date()
+    let getNow = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate(), today.getHours(), today.getMinutes(), today.getSeconds(), today.getMilliseconds());
+    let getTimeCmt = 0;
+
     getComment.data.forEach((e) => {
       if (e.product_id == id) {
+        const timeCmt = (getNow - new Date(e.create_at)) / 1000;
+        if (timeCmt < 60) {
+          getTimeCmt = "Vừa xong"
+        } 
+        else if (timeCmt >= 60 && timeCmt <= 60 * 60) {
+          getTimeCmt = Math.floor(timeCmt / 60) + " phút trước"
+        } 
+        else if (timeCmt >= 60 * 60 && timeCmt <= 60 * 60 * 24) {
+          getTimeCmt = Math.floor(timeCmt / 3600) + " giờ trước"
+        }
+        else if (timeCmt >= 60 * 60 * 24 && timeCmt <= 60 * 60 * 24 * 30) {
+          getTimeCmt = Math.floor(timeCmt / (60 * 60 * 24)) + " ngày trước"
+        }
+        else if (timeCmt >= 60 * 60 * 24 * 30 && timeCmt <= 60 * 60 * 24 * 30 * 12) {
+          getTimeCmt = Math.floor(timeCmt / (60 * 60 * 24 * 30)) + " tháng trước"
+        }
+        else {
+          getTimeCmt = Math.floor(timeCmt / (60 * 60 * 24 * 30 * 12)) + " năm trước"
+        }
         getUser.data.forEach((user) => {
           if (user.id == e.user_id) {
-            arrCommentById.push({...e, ...user}) 
+            arrCommentById.push({ ...e, ...user, getTimeCmt })
           }
         })
       }
@@ -106,10 +129,6 @@ const ProductDetail = {
           </div>
           <div class="w-full md:w-full flex items-start md:w-full px-3">
              <div class="flex items-start w-full text-gray-700 px-2 mr-auto">
-                <svg fill="none" class="w-5 h-5 text-gray-600 mr-1" viewBox="0 0 24 24" stroke="currentColor">
-                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                <p class="text-xs md:text-sm pt-px">Some HTML is okay.</p>
              </div>
              <div class="-mr-1">
                 <input type='submit' class="bg-white text-gray-700 font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-gray-100 cursor-pointer" id="btn_comment" name="btn_comment" value='Gửi bình luận'>
@@ -126,8 +145,8 @@ const ProductDetail = {
               <img src="${cmt.image}" class="w-14" />
           </div>
           <div class="ml-5">
-              <span class="font-bold">${cmt.user_name}</span> <span class="">10</span>
-              <span class="block mt-5">${cmt.content}</span>
+              <span class="font-bold">${cmt.user_name}</span> <span class="">- ${cmt.getTimeCmt}</span>
+              <span class="block mt-5 font-medium">${cmt.content}</span>
           </div>
         </div>
       `).join("")}
@@ -151,12 +170,13 @@ const ProductDetail = {
       reRender(Header, "#main_header");
     });
     if (btn_comment) {
+      const today = new Date()
       btn_comment.addEventListener("click", function () {
         if (localStorage.getItem("account")) {
           const commentContent = document.querySelector("#comment_content").value;
           add({
             content: commentContent,
-            create_at: "2021-12-01 14:37:57",
+            create_at: new Date(today.getFullYear(), today.getMonth() + 1, today.getDate(), today.getHours(), today.getMinutes(), today.getSeconds(), 0),
             user_id: JSON.parse(localStorage.getItem("account")).id,
             product_id: id
           }).then(() => toastr.success("Gửi bình luận thành công"))
