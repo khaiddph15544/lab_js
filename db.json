@@ -213,7 +213,7 @@
     },
     {
       "email": "hanhnt@gmail.com",
-      "password": "$2a$10$c0FEJ.7vpue3YDf9jAm1H.z/JB.15bBuXGzrpo5GhpPF988t5tfVy",
+      "password": "$2a$10$aqtA9/cYuySYrnN9ze13d.ajt/jl78kbxiwsqIDOPuc/bx5bP1Lse",
       "image": "http://res.cloudinary.com/dcalzi23m/image/upload/v1645204983/coduilnoi5ehex8uvhmb.jpg",
       "user_name": "hanhnguyen",
       "role": "1",
@@ -226,6 +226,50 @@
       "user_name": "iiiiiii",
       "role": "1",
       "id": 5
+    }
+  ],
+  "comments": [
+    {
+      "content": "Sản phẩm tốt",
+      "create_at": "2021-12-01 14:37:57",
+      "user_id": 1,
+      "product_id": 3,
+      "id": 1
+    },
+    {
+      "content": "Tốt",
+      "create_at": "2021-12-01 14:39:57",
+      "user_id": 1,
+      "product_id": 3,
+      "id": 2
+    },
+    {
+      "content": "Không tốt lắm",
+      "create_at": "2021-12-01 14:39:57",
+      "user_id": 1,
+      "product_id": 15,
+      "id": 3
+    },
+    {
+      "content": "a",
+      "create_at": "2021-12-01 14:37:57",
+      "user_id": 3,
+      "product_id": 3,
+      "id": 4
+    },
+    {
+      "content": "tttt",
+      "create_at": "2021-12-01 14:37:57",
+      "user_id": 1,
+      "product_id": "3",
+      "id": 5
+    },
+    {
+      "content": "sản phẩm tốt",
+      "create_at": "2021-12-01 14:37:57",
+      "user_id": 4,
+      "product_id": "1",
+      "id": 6
     }
   ]
 }

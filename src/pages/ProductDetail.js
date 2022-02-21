@@ -1,5 +1,7 @@
 import toastr from "toastr";
 import "toastr/build/toastr.min.css";
+import { add, getAll } from "../api/comment";
+import { getAll as getAllUser, getOne as getOneUser } from "../api/user";
 import { getOne } from "../api/product";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -7,9 +9,23 @@ import { addToCart } from "../utils/cart";
 import reRender from "../utils/reRender";
 
 const ProductDetail = {
-    async print(id) {
-        const { data } = await getOne(id);
-        return `
+  async print(id) {
+    const { data } = await getOne(id);
+    const getComment = await getAll()
+    const getUser = await getAllUser()
+    let arrCommentById = []
+    getComment.data.forEach((e) => {
+      if (e.product_id == id) {
+        getUser.data.forEach((user) => {
+          if (user.id == e.user_id) {
+            arrCommentById.push({...e, ...user}) 
+          }
+        })
+      }
+    })
+    console.log(arrCommentById)
+
+    return `
             ${await Header.print()}
             <section class="text-gray-700 body-font overflow-hidden bg-white">
   <div class="container px-5 py-24 mx-auto">
@@ -70,7 +86,7 @@ const ProductDetail = {
         </div>
         <div class="flex">
         <span class="title-font text-dashed font-semibold text-2xl text-red-900">${new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(data.price - (data.price * data.discount / 100))}</span>
-          <span class="title-font ml-10 font-medium text-lg  mt-1 line-through text-gray-900">${new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(data.price)}</span>
+          <span class="title-font ml-10 font-medium text-lg  mt-1 line-through text-gray-900">${data.discount > 0 ? new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(data.price) : ""}</span>
           <button class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded" id="addtocart">Thêm vào giỏ hàng</button>
           <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
             <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
@@ -82,26 +98,40 @@ const ProductDetail = {
     </div>
     
     
-    <div class="flex mx-auto items-center justify-center shadow-lg mt-56 mx-8 mb-4 max-w-lg">
-    <form class="w-full max-w-xl bg-white rounded-lg px-4 pt-2">
-       <div class="flex flex-wrap -mx-3 mb-6">
-          <h2 class="px-4 pt-3 pb-2 text-gray-800 text-lg">Add a new comment</h2>
+    <div class="flex mx-auto items-center justify-center shadow-lg mt-24 mx-8 mb-4 ">
+        <div class="w-full flex flex-wrap -mx-3 mb-6">
+          <h2 class="px-4 pt-3 pb-2 text-gray-800 text-lg font-bold">Thêm bình luận mới</h2>
           <div class="w-full md:w-full px-3 mb-2 mt-2">
-             <textarea class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white" name="body" placeholder='Type Your Comment' required></textarea>
+             <textarea id="comment_content" class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-40 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white" name="body" placeholder='Nhập nội dung...' required></textarea>
           </div>
           <div class="w-full md:w-full flex items-start md:w-full px-3">
-             <div class="flex items-start w-1/2 text-gray-700 px-2 mr-auto">
+             <div class="flex items-start w-full text-gray-700 px-2 mr-auto">
                 <svg fill="none" class="w-5 h-5 text-gray-600 mr-1" viewBox="0 0 24 24" stroke="currentColor">
                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
                 <p class="text-xs md:text-sm pt-px">Some HTML is okay.</p>
              </div>
              <div class="-mr-1">
-                <input type='submit' class="bg-white text-gray-700 font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-gray-100" value='Post Comment'>
+                <input type='submit' class="bg-white text-gray-700 font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-gray-100 cursor-pointer" id="btn_comment" name="btn_comment" value='Gửi bình luận'>
              </div>
-          </div>
-       </form>
+        </div>
     </div>
+
+ </div>
+ <div class="main_content_comment shadow-lg mt-24 mx-8 mb-4 ">
+      <h2 class="font-bold text-xl">Bình luận (${arrCommentById.length})</h2>
+      ${arrCommentById.map((cmt) => `
+          <div class="flex mt-5 ml-10 block border-b-2 border-zinc-200 py-5">
+          <div>
+              <img src="${cmt.image}" class="w-14" />
+          </div>
+          <div class="ml-5">
+              <span class="font-bold">${cmt.user_name}</span> <span class="">10</span>
+              <span class="block mt-5">${cmt.content}</span>
+          </div>
+        </div>
+      `).join("")}
+    
  </div>
 
   </div>
@@ -109,16 +139,34 @@ const ProductDetail = {
 
             ${Footer.print()}
         `;
-    },
-    afterRender(id) {
-        Header.afterRender();
-        const addtocart = document.querySelector("#addtocart");
-        addtocart.addEventListener("click", async () => {
-            const { data } = await getOne(id);
-            addToCart({ ...data, quantity: Number(document.querySelector("#quantity").value) });
-            toastr.success("Đã thêm sản phẩm vào giỏ hàng");
-            reRender(Header, "#main_header");
-        });
-    },
+  },
+  afterRender(id) {
+    Header.afterRender();
+    const addtocart = document.querySelector("#addtocart");
+    const btn_comment = document.querySelector("#btn_comment")
+    addtocart.addEventListener("click", async () => {
+      const { data } = await getOne(id);
+      addToCart({ ...data, quantity: Number(document.querySelector("#quantity").value) });
+      toastr.success("Đã thêm sản phẩm vào giỏ hàng");
+      reRender(Header, "#main_header");
+    });
+    if (btn_comment) {
+      btn_comment.addEventListener("click", function () {
+        if (localStorage.getItem("account")) {
+          const commentContent = document.querySelector("#comment_content").value;
+          add({
+            content: commentContent,
+            create_at: "2021-12-01 14:37:57",
+            user_id: JSON.parse(localStorage.getItem("account")).id,
+            product_id: id
+          }).then(() => toastr.success("Gửi bình luận thành công"))
+            .then(() => window.location = `/products/id=${id}`)
+        } else {
+          window.location = "/signin"
+        }
+      })
+    }
+
+  },
 };
 export default ProductDetail;
