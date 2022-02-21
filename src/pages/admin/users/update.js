@@ -25,7 +25,7 @@ const UpdateUser = {
         return `
             ${NavAdmin.print()}
             <h2 class="font-bold text-2xl my-5 text-center">Cập nhật thông tin người dùng</h2>
-            <form class="w-full max-w-4xl m-auto" method="POST" id="form-update-product">
+            <form class="w-full max-w-4xl m-auto" method="POST" id="form-update-user">
                 <div class="flex flex-wrap -mx-3 mb-6">
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="w-full block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
@@ -80,7 +80,7 @@ const UpdateUser = {
     },
 
     afterRender(updateId) {
-        const formAdd = document.querySelector("#form-update-product");
+        const formAdd = document.querySelector("#form-update-user");
         const CLOUDINARY_PRESET_KEY = "phczuaaq";
         const CLOUDINARY_API_URL = "https://api.cloudinary.com/v1_1/dcalzi23m/image/upload";
 
