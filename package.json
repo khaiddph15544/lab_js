@@ -1,6 +1,7 @@
 {
   "name": "my-ass",
   "version": "0.0.0",
+  "type": "commonjs",
   "scripts": {
     "start:server": "json-server-auth --watch db.json --port 3001",
     "dev": "vite",

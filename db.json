@@ -197,7 +197,7 @@
     },
     {
       "email": "khanhnq@gmail.com",
-      "password": "$2a$10$B9PnxZp3YlcNoSfBvzXJf.wCXU05DzVzoyksf4oUIi6kG/t9IwP86",
+      "password": "$2a$10$aqtA9/cYuySYrnN9ze13d.ajt/jl78kbxiwsqIDOPuc/bx5bP1Lse",
       "image": "http://res.cloudinary.com/dcalzi23m/image/upload/v1645204857/pebzrucdtwkklogpxzlh.jpg",
       "user_name": "khanhnguyen",
       "role": "0",
@@ -262,6 +262,59 @@
       "create_at": "2022-03-21T19:25:57.000Z",
       "user_id": 1,
       "product_id": "2",
+      "id": 5
+    },
+    {
+      "content": "sản phẩm giá rẻ",
+      "create_at": "2022-03-21T21:28:03.000Z",
+      "user_id": 2,
+      "product_id": "6",
+      "id": 6
+    }
+  ],
+  "orders": [
+    {
+      "address": "80/47 Xuân Phương",
+      "phone_number": "0962597441",
+      "total_price": "18035000",
+      "id": 1
+    },
+    {
+      "address": "Đoan Hùng Phú Thọ",
+      "phone_number": "0256897412",
+      "total_price": "21206000",
+      "id": 2
+    }
+  ],
+  "order_detail": [
+    {
+      "order_id": 1,
+      "price": 2375000,
+      "quantity": 3,
+      "id": 1
+    },
+    {
+      "order_id": 1,
+      "price": 2176000,
+      "quantity": 5,
+      "id": 2
+    },
+    {
+      "order_id": 2,
+      "price": 2375000,
+      "quantity": 3,
+      "id": 3
+    },
+    {
+      "order_id": 2,
+      "price": 2176000,
+      "quantity": 1,
+      "id": 4
+    },
+    {
+      "order_id": 2,
+      "price": 2375000,
+      "quantity": 5,
       "id": 5
     }
   ]
