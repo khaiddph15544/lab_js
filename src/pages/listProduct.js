@@ -15,7 +15,7 @@ const listProduct = {
             ${await Header.print()}
             <div class="w-11/12 m-auto">
                 <h3 class="px-5 font-bold text-emerald-700 text-3xl my-10">DANH SÁCH SẢN PHẨM</h3>
-                <div class="grid grid-cols-${arrData.length}">
+                <div class="grid grid-cols-4">
                 ${arrData.map((e) => `
                     <div class="p-5">
                         <a href="/products/id=${e.id}">
@@ -30,6 +30,9 @@ const listProduct = {
             </div>
             ${Footer.print()}
         `;
+    },
+    afterRender() {
+        Header.afterRender();
     },
 };
 export default listProduct;

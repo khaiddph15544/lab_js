@@ -1,5 +1,3 @@
-import toastr from "toastr";
-import "toastr/build/toastr.min.css";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { minus, plus, removeItemInCart } from "../utils/cart";
@@ -51,9 +49,9 @@ const CartTheme = {
                         </div>
                         <div class="flex justify-center w-1/5">
                         
-                        <button data-id="${e.id}" class="minus">-</button>
-                          <input class="mx-2 border text-center w-8" type="text" value="${e.quantity}">
-                        <button data-id="${e.id}" class="plus">+</button>
+                        <button type="button" data-id="${e.id}" class="minus">-</button>
+                          <input id="quantity" class="mx-2 border text-center w-8" type="text" value="${e.quantity}">
+                        <button type="button" data-id="${e.id}" class="plus">+</button>
                         
                         </div>
                         <span class="text-center w-1/5 font-semibold text-sm">${new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(e.price - (e.price * e.discount / 100))}</span>
@@ -125,7 +123,6 @@ const CartTheme = {
             const currentId = btn.dataset.id;
             btn.addEventListener("click", () => {
                 removeItemInCart(currentId);
-                toastr.success("Đã xóa sản phẩm");
             });
         });
     },

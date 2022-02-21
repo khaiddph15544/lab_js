@@ -1,4 +1,4 @@
-import { getAll, getOne } from "../api/product";
+import { getAll } from "../api/product";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 

@@ -1,3 +1,5 @@
+import toastr from "toastr";
+import "toastr/build/toastr.min.css";
 import CartTheme from "../pages/CartTheme";
 import reRender from "./reRender";
 
@@ -17,12 +19,12 @@ export const addToCart = (newProduct) => {
 };
 
 export const plus = (id) => {
-    cart.find((item) => item.id === id).quantity += 1;
+    cart.find((item) => item.id == id).quantity += 1;
     localStorage.setItem("cart", JSON.stringify(cart));
     reRender(CartTheme, "#main");
 };
 export const minus = (id) => {
-    const currentQuantity = cart.find((item) => item.id === id).quantity -= 1;
+    const currentQuantity = cart.find((item) => item.id == id).quantity -= 1;
     localStorage.setItem("cart", JSON.stringify(cart));
     if (currentQuantity < 1) {
         removeItemInCart(id);
@@ -33,11 +35,12 @@ export const minus = (id) => {
 export const removeItemInCart = (id) => {
     const confirm = window.confirm("Bạn có muốn xóa không?");
     if (confirm) {
-        cart = cart.filter((item) => item.id !== id);
+        cart = cart.filter((item) => item.id != id);
         localStorage.setItem("cart", JSON.stringify(cart));
+        toastr.success("Đã xóa sản phẩm");
         reRender(CartTheme, "#main");
     } else {
-        cart.find((item) => item.id === id).quantity = 1;
+        cart.find((item) => item.id == id).quantity = 1;
         localStorage.setItem("cart", JSON.stringify(cart));
         reRender(CartTheme, "#main");
     }
