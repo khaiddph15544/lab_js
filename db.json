@@ -156,7 +156,7 @@
       "quantity": "1000",
       "discount": "5",
       "desc": "Mặt số skeleton không đơn giản chỉ là lộ máy mà đó còn là cả một bức tranh nghệ thuật. Chiếc Hublot Big Bang Unico Black Magic nổi bật vô cùng ngầu với bộ vỏ ceramic đen toàn bộ từ vành bezel, thân vỏ cho tới bộ khóa. Chất liệu ceramic nổi bật là một chất liệu hiện đại, trọng lượng nhẹ và có độ cứng rất cao.",
-      "cate_id": 6,
+      "cate_id": "6",
       "id": 16
     }
   ],
@@ -270,6 +270,13 @@
       "user_id": 2,
       "product_id": "6",
       "id": 6
+    },
+    {
+      "content": "đồng hồ đẹp",
+      "create_at": "2022-03-22T05:08:06.000Z",
+      "user_id": 1,
+      "product_id": "3",
+      "id": 7
     }
   ],
   "orders": [

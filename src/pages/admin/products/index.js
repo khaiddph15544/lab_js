@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getOne } from "../../../api/category";
+import { getAll as getAllCate } from "../../../api/category";
 import { getAll, remove } from "../../../api/product";
 import NavAdmin from "../../../components/admin/NavAdmin";
 import reRender from "../../../utils/reRender";
@@ -7,6 +7,16 @@ import reRender from "../../../utils/reRender";
 const ProductShow = {
     async print() {
         const { data } = await getAll();
+        const getCate = await getAllCate();
+        const arrPr = []
+        data.forEach((e) => {
+          getCate.data.forEach((cate) => {
+              if(e.cate_id == cate.id){
+                arrPr.push({...cate, ...e})
+              }
+          })
+        })
+
         return `
         ${NavAdmin.print()}
         <a href="/admin/products/add" class="border border-grey-600 m-8 px-5 py-1 inline-block">Thêm mới</a>
@@ -47,7 +57,7 @@ const ProductShow = {
                   </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                  ${data.map((e) => `
+                  ${arrPr.map((e) => `
                       <tr>
                         <td class="px-6 py-4">
                           ${e.id}
@@ -59,7 +69,7 @@ const ProductShow = {
                           <img src="${e.image}" />
                         </td>
                         <td class="px-4 py-4">
-                          ${(e.price)} đ
+                        ${new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format((e.price))}
                         </td>
                         <td class="px-4 py-4">
                           ${e.quantity}
@@ -71,7 +81,7 @@ const ProductShow = {
                           ${e.desc}
                         </td>
                         <td class="px-4 py-4">
-                         ${e.cate_id}
+                         ${e.cate_name}
                         </td>
                         <td class="px-4 py-4 text-sm font-bold">
                           <a href="/admin/products/update/id=${e.id}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
