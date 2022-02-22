@@ -2,6 +2,7 @@ import toastr from "toastr";
 import "toastr/build/toastr.min.css";
 import { add, getAll } from "../api/comment";
 import { getAll as getAllUser, getOne as getOneUser } from "../api/user";
+import { getAll as getAllProduct} from "../api/product";
 import { getOne } from "../api/product";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -46,6 +47,15 @@ const ProductDetail = {
         })
       }
     })
+
+    const getProduct = await getAllProduct()
+    let arrPrInvolve = []
+    getProduct.data.forEach((e) => {
+      if(e.cate_id == data.cate_id){
+        arrPrInvolve.push(e)
+      }
+    })
+    arrPrInvolve = arrPrInvolve.filter((item) => item.id != id)
 
     return `
             ${await Header.print()}
@@ -135,6 +145,8 @@ const ProductDetail = {
         </div>
     </div>
 
+    
+
  </div>
  <div class="main_content_comment shadow-lg mt-24 mx-8 mb-4 ">
       <h2 class="font-bold text-xl">Bình luận (${arrCommentById.length})</h2>
@@ -153,7 +165,23 @@ const ProductDetail = {
  </div>
 
   </div>
+  <div class="w-full m-auto ml-8">
+                <h3 class="px-5 font-bold text-emerald-700 text-3xl my-10">Sản phẩm liên quan</h3>
+                <div class="grid grid-cols-4">
+                ${arrPrInvolve.map((e) => `
+                <div class="p-5">
+                    <a href="/products/id=${e.id}">
+                        <img src = "${e.image}">
+                        <p class="font-bold text-emerald-700 text-lg">${e.product_name}</p>
+                    </a>
+                    <span class=" font-bold mt-5 inline-block text-lg text-orange-800">${new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(e.price - (e.price * e.discount / 100))}</span>
+                    <span class="line-through ml-5">${e.discount > 0 ? new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(e.price) : ""}</span>
+                </div>
+            `).join("")}
+                </div>
+            </div>
 </section>
+
 
             ${Footer.print()}
         `;
