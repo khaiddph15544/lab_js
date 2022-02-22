@@ -150,7 +150,7 @@ const ProductDetail = {
  </div>
  <div class="main_content_comment shadow-lg mt-24 mx-8 mb-4 ">
       <h2 class="font-bold text-xl">Bình luận (${arrCommentById.length})</h2>
-      ${arrCommentById.map((cmt) => `
+      ${arrCommentById.reverse().map((cmt) => `
           <div class="flex mt-5 ml-10 block border-b-2 border-zinc-200 py-5">
           <div>
               <img src="${cmt.image}" class="w-14" />

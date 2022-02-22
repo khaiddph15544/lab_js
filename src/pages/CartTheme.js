@@ -50,7 +50,7 @@ const CartTheme = {
                         <div class="flex justify-center w-1/5">
                         
                         <button type="button" data-id="${e.id}" class="minus">-</button>
-                          <input id="quantity" class="mx-2 border text-center w-8" type="text" value="${e.quantity}">
+                          <input id="quantity" class="mx-2 w-20 border text-center w-8" type="text" value="${e.quantity}">
                         <button type="button" data-id="${e.id}" class="plus">+</button>
                         
                         </div>

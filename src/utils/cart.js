@@ -27,7 +27,17 @@ export const minus = (id) => {
     const currentQuantity = cart.find((item) => item.id == id).quantity -= 1;
     localStorage.setItem("cart", JSON.stringify(cart));
     if (currentQuantity < 1) {
-        removeItemInCart(id);
+        const confirm = window.confirm("Bạn có muốn xóa không?");
+        if (confirm) {
+            cart = cart.filter((item) => item.id != id);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            toastr.success("Đã xóa sản phẩm");
+            reRender(CartTheme, "#main");
+        } else {
+            cart.find((item) => item.id == id).quantity = 1;
+            localStorage.setItem("cart", JSON.stringify(cart));
+            reRender(CartTheme, "#main");
+        }
     }
     reRender(CartTheme, "#main");
 };
@@ -38,10 +48,6 @@ export const removeItemInCart = (id) => {
         cart = cart.filter((item) => item.id != id);
         localStorage.setItem("cart", JSON.stringify(cart));
         toastr.success("Đã xóa sản phẩm");
-        reRender(CartTheme, "#main");
-    } else {
-        cart.find((item) => item.id == id).quantity = 1;
-        localStorage.setItem("cart", JSON.stringify(cart));
         reRender(CartTheme, "#main");
     }
 };

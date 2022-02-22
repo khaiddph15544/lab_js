@@ -277,6 +277,20 @@
       "user_id": 1,
       "product_id": "3",
       "id": 7
+    },
+    {
+      "content": "giá rẻ",
+      "create_at": "2022-03-22T05:57:58.000Z",
+      "user_id": 1,
+      "product_id": "1",
+      "id": 8
+    },
+    {
+      "content": "đồng hồ đẹp",
+      "create_at": "2022-03-22T05:58:09.000Z",
+      "user_id": 1,
+      "product_id": "1",
+      "id": 9
     }
   ],
   "orders": [
