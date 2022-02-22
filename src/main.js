@@ -20,6 +20,7 @@ import listProduct from "./pages/listProduct";
 import OrderShow from "./pages/admin/orders";
 import CommentShow from "./pages/admin/comments";
 import OrderDetailShow from "./pages/admin/orders/detail";
+import CommentDetail from "./pages/admin/comments/detail";
 
 const route = new Navigo("/", { linksSelector: "a" });
 
@@ -113,6 +114,9 @@ route.on({
     },
     "/admin/order_detail/id=:id": ({data}) => {
         render(OrderDetailShow, data.id);
+    },
+    "/admin/comments/product_id=:id": ({data}) => {
+        render(CommentDetail, data.id)
     },
 });
 

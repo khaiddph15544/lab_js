@@ -36,7 +36,7 @@ const CommentShow = {
         }
         
         if(e.product_id == pr.id){
-          arrComment.push({...e, ...pr, getTimeCmt })
+          arrComment.push({  ...e, getTimeCmt, ...pr })
         }  
       })
       // if (e.product_id == id) {
@@ -51,8 +51,7 @@ const CommentShow = {
     console.log(getTimeCmt)
     return `
         ${NavAdmin.print()}
-        <a href="/admin/categories/add" class="border border-grey-600 m-8 px-5 py-1 inline-block">Thêm mới</a>
-        <div class="flex flex-col w-full">
+        <div class="flex flex-col w-full mt-10">
         <div class="-my-2 overflow-x-auto max-w-9sm m-auto w-full">
           <div class="py-2 align-middle inline-block sm:px-6 lg:px-8 w-full">
             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -83,16 +82,16 @@ const CommentShow = {
                           ${e.product_name}
                         </td>
                         <td class="px-4 py-4">
-                          ${e.content}
+                          4
                         </td>
                         <td class="px-4 py-4">
                           ${e.create_at}
                         </td>
                         <td class="px-4 py-4">
-                          ${e.user_id}
+                          ${e.create_at}
                         </td>
                         <td class="px-4 py-4 text-sm font-bold">
-                          <a href="/admin/categories/update/id=${e.id}" class="text-indigo-600 hover:text-indigo-900">Xem chi tiết</a>
+                          <a href="/admin/comments/product_id=${e.product_id}" class="text-indigo-600 hover:text-indigo-900">Xem chi tiết</a>
                         </td>
                       </tr>
                   `).join("")}
