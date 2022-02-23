@@ -112,23 +112,26 @@ const Payment = {
                 const phone_number = document.querySelector("#phone_number").value
                 const dataCart = JSON.parse(localStorage.getItem("cart"));
                 // let tam_tinh = 0;
+                var newDate = new Date();
+                var now = newDate.toLocaleString()
                 add({
-                    user_id: localStorage.getItem("account").user_id,
+                    user_id: JSON.parse(localStorage.getItem("account")).id,
                     buyer_name: fullname,
                     address: address,
                     phone_number: phone_number,
-                    total_price: document.querySelector("#tong_tien").value.replace(/\D/g, '')
+                    total_price: document.querySelector("#tong_tien").value.replace(/\D/g, ''),
+                    status: 0,
+                    create_at: now,
+                    update_at: now
                 }).then((res) => {
                     dataCart.forEach((e) => {
                         // tam_tinh += (e.price - (e.price * e.discount / 100)) * e.quantity;
                         addDetail({
                             product_id: e.id,
                             order_id: res.data.id,
-
                             price: e.price - (e.price * e.discount / 100),
                             quantity: e.quantity,
                         })
-
                     });
                 }).then(() => toastr.success("Đặt hàng thành công!"))
                     .then(setTimeout(() => window.location = "/", 2000))
