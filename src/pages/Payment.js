@@ -18,14 +18,15 @@ const Payment = {
                  font-family:roboto
             </style>
             ${await Header.print()}
+            <form action="" method="POST" id="payment_form"  />
                 <div class="grid grid-cols-2 w-11/12 m-auto my-10">
                     <div class="m-auto w-3/4">
-                        <h2 class="block border-b border-gray-600 outline-none text-3xl py-3 mt-10">Thông tin thanh toán</h2>
-                        <input type="text" id="fullname" name="fullname" placeholder="Nhập họ và tên..." class="block border-b border-gray-600 outline-none py-3 mt-10 text-xl w-full"> 
-                        <input type="text" class="outline-none block border-b border-gray-600 outline-none py-3 mt-10 text-xl w-full" value="Email: ${getUser.email}" readonly>
-                        <input type="text" id="address" name="address" placeholder="Địa chỉ nhận hàng..."  class="block border-b border-gray-600 outline-none py-3 mt-10 text-xl w-full">
-                        <input type="text" id="phone_number" name="phone_number" placeholder="Số điện thoại..." class="block border-b border-gray-600 outline-none py-3 mt-10 text-xl w-full">
-                        <select name="choose_payment" id="choose_payment" class="my-5 w-full py-3 mt-10 text-xl">
+                        <h2 class="block border-b border-gray-600 outline-none text-3xl py-3">Thông tin thanh toán</h2>
+                        <input type="text" id="fullname" name="fullname" placeholder="Nhập họ và tên..." class="indent-2 block border-b border-gray-600 outline-none py-3 mt-10 text-xl w-full"> 
+                        <input type="text" class="outline-none block border-b border-gray-600 outline-none indent-2 py-3 mt-10 text-xl w-full" value="Email: ${getUser.email}" readonly>
+                        <input type="text" id="address" name="address" placeholder="Địa chỉ nhận hàng..."  class="indent-2 block border-b border-gray-600 outline-none py-3 mt-10 text-xl w-full">
+                        <input type="text" id="phone_number" name="phone_number" placeholder="Số điện thoại..." class="indent-2 block border-b border-gray-600 outline-none py-3 mt-10 text-xl w-full">
+                        <select name="payment_method" id="choose_payment" class="my-2 w-full py-3 mt-10 text-xl border-b border-gray-600 outline-none">
                             <option value="">Chọn phương thức thanh toán</option> 
                             <option value="1">Thanh toán khi nhận hàng</option>
                         </select>
@@ -68,74 +69,73 @@ const Payment = {
     },
     afterRender() {
         Header.afterRender();
-        // $("#payment_form").validate({
-        //     rules: {
-        //         fullname: {
-        //             require: true,
-        //             minlength: 6
-        //         },
-        //         address: {
-        //             require: true,
-        //         },
-        //         phone_number: {
-        //             require: true,
-        //             minlength: 10,
-        //             maxlength: 11,
-        //             digits: true
-        //         },
-        //         choose_payment: {
-        //             require: true
-        //         }
-        //     },
-        //     messages: {
-        //         fullname: {
-        //             require: "Bạn phải nhập họ tên!",
-        //             minlength: "Họ tên phải lớn hơn 6 kí tự!"
-        //         },
-        //         address: {
-        //             require: "Địa chỉ không được để trống!",
-        //         },
-        //         phone_number: {
-        //             require: "Bạn phải điền số điện thoại!",
-        //             minlength: "Số điệnt thoại phải lớn hơn 10 kí tự!",
-        //             maxlength: "Số điện thoại phải nhỏ hơn 11 kí tự!",
-        //             digits: "Số điện thoại phải là một dãy số lớn hơn 0!"
-        //         },
-        //         choose_payment: {
-        //             require: "Bạn cần chọn phương thức thanh toán!"
-        //         }
-        //     }
-        // })
-        const btn_payment = document.querySelector("#btn_payment");
-        btn_payment.addEventListener("click", () => {
-            const fullname = document.querySelector("#fullname").value
-            const address = document.querySelector("#address").value
-            const phone_number = document.querySelector("#phone_number").value
-            const dataCart = JSON.parse(localStorage.getItem("cart"));
-            // let tam_tinh = 0;
-            add({
-                user_id: localStorage.getItem("account").user_id,
-                buyer_name: fullname,
-                address: address,
-                phone_number: phone_number,
-                total_price: document.querySelector("#tong_tien").value.replace(/\D/g, '')
-            }).then((res) => {
-                dataCart.forEach((e) => {
-                    // tam_tinh += (e.price - (e.price * e.discount / 100)) * e.quantity;
-                    addDetail({
-                        product_id: e.id,
-                        order_id: res.data.id,
+        $("#payment_form").validate({
+            rules: {
+                fullname: {
+                    required: true,
+                    minlength: 6
+                },
+                address: {
+                    required: true,
+                },
+                phone_number: {
+                    required: true,
+                    minlength: 10,
+                    maxlength: 11,
+                    digits: true
+                },
+                payment_method: {
+                    required: true,
+                },
+            },
+            messages: {
+                fullname: {
+                    required: "Bạn phải nhập họ và tên!",
+                    minlength: "Họ tên phải lớn hơn 6 kí tự!" 
+                },
+                address: {
+                    required: "Bạn phải điền địa chỉ nhận hàng",
+                },
+                phone_number: {
+                    required: "Bạn phải nhập số điện thoại!",
+                    minlength: "Số điện thoại phải lớn hơn 10 kí tự!",
+                    maxlength: "Số điện thoại phải nhỏ hơn 11 kí tự!",
+                    digits: "Số điện thoại phải là một dãy số lớn hơn 0!"
+                },
+                payment_method: {
+                    required: "Bạn chưa chọn phương thức thanh toán!",
+                },
+            },
+            submitHandler() {
+                const fullname = document.querySelector("#fullname").value
+                const address = document.querySelector("#address").value
+                const phone_number = document.querySelector("#phone_number").value
+                const dataCart = JSON.parse(localStorage.getItem("cart"));
+                // let tam_tinh = 0;
+                add({
+                    user_id: localStorage.getItem("account").user_id,
+                    buyer_name: fullname,
+                    address: address,
+                    phone_number: phone_number,
+                    total_price: document.querySelector("#tong_tien").value.replace(/\D/g, '')
+                }).then((res) => {
+                    dataCart.forEach((e) => {
+                        // tam_tinh += (e.price - (e.price * e.discount / 100)) * e.quantity;
+                        addDetail({
+                            product_id: e.id,
+                            order_id: res.data.id,
 
-                        price: e.price - (e.price * e.discount / 100),
-                        quantity: e.quantity,
-                    })
+                            price: e.price - (e.price * e.discount / 100),
+                            quantity: e.quantity,
+                        })
 
-                });
-            }).then(() => toastr.success("Đặt hàng thành công!"))
-            .then(setTimeout(() => window.location = "/", 2000))
+                    });
+                }).then(() => toastr.success("Đặt hàng thành công!"))
+                    .then(setTimeout(() => window.location = "/", 2000))
 
-
+            }
         })
+
     },
 };
 export default Payment;

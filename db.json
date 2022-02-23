@@ -277,6 +277,13 @@
       "user_id": 1,
       "product_id": "7",
       "id": 10
+    },
+    {
+      "content": "san pham toot",
+      "create_at": "2022-03-22T07:54:29.000Z",
+      "user_id": 1,
+      "product_id": "1",
+      "id": 11
     }
   ],
   "orders": [
@@ -300,6 +307,27 @@
       "phone_number": "0962597441",
       "total_price": "2880000",
       "id": 3
+    },
+    {
+      "buyer_name": "Dang Khai",
+      "address": "80/47 Xuân Phương",
+      "phone_number": "0962597441",
+      "total_price": "11430000",
+      "id": 4
+    },
+    {
+      "buyer_name": "Khai Dang",
+      "address": "80/47 Xuân Phương",
+      "phone_number": "0962597441",
+      "total_price": "25260000",
+      "id": 5
+    },
+    {
+      "buyer_name": "Khai Dang",
+      "address": "80/47 Xuân Phương",
+      "phone_number": "0962597441",
+      "total_price": "37560000",
+      "id": 6
     }
   ],
   "order_detail": [
@@ -344,6 +372,48 @@
       "price": 2850000,
       "quantity": 1,
       "id": 6
+    },
+    {
+      "product_id": 6,
+      "order_id": 4,
+      "price": 2850000,
+      "quantity": 4,
+      "id": 7
+    },
+    {
+      "product_id": 6,
+      "order_id": 5,
+      "price": 2850000,
+      "quantity": 5,
+      "id": 8
+    },
+    {
+      "product_id": 2,
+      "order_id": 5,
+      "price": 5490000,
+      "quantity": 2,
+      "id": 9
+    },
+    {
+      "product_id": 6,
+      "order_id": 6,
+      "price": 2850000,
+      "quantity": 6,
+      "id": 10
+    },
+    {
+      "product_id": 2,
+      "order_id": 6,
+      "price": 5490000,
+      "quantity": 2,
+      "id": 11
+    },
+    {
+      "product_id": 1,
+      "order_id": 6,
+      "price": 1350000,
+      "quantity": 7,
+      "id": 12
     }
   ]
 }
