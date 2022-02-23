@@ -21,6 +21,7 @@ import OrderShow from "./pages/admin/orders";
 import CommentShow from "./pages/admin/comments";
 import OrderDetailShow from "./pages/admin/orders/detail";
 import CommentDetail from "./pages/admin/comments/detail";
+import Order_manage from "./pages/OrderManage";
 
 const route = new Navigo("/", { linksSelector: "a" });
 
@@ -118,6 +119,9 @@ route.on({
     "/admin/comments/product_id=:id": ({data}) => {
         render(CommentDetail, data.id)
     },
+    "/order_manage": () => {
+        render(Order_manage)
+    }
 });
 
 route.resolve();

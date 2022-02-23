@@ -36,7 +36,7 @@ const Nav = {
                 </ul>
                 </div>
                 <li class="inline"><a href="/" class="px-5 text-lg font-semibold">Tin tức</a></li>
-                <li class="inline"><a href="/" class="px-5 text-lg font-semibold">Liên hệ</a></li>
+                <li class="inline"><a href="/order_manage" class="px-5 text-lg font-semibold">Đơn hàng</a></li>
                 <li class="inline"><a href="/" class="px-5 text-lg font-semibold">Bảo hành</a></li>
             </ul>
         `;
