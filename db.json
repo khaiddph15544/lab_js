@@ -313,7 +313,7 @@
       "total_price": "5730000",
       "status": 3,
       "create_at": "2/24/2022, 4:07:46 AM",
-      "update_at": "2/24/2022, 4:18:42 AM",
+      "update_at": "2/24/2022, 12:25:40 PM",
       "id": 2
     },
     {
@@ -323,8 +323,7 @@
       "phone_number": "0962597441",
       "total_price": "5255000",
       "status": 2,
-      "create_at": "2/24/2022, 4:20:42 AM",
-      "update_at": "2/24/2022, 4:21:03 AM",
+      "update_at": "2/24/2022, 12:26:05 PM",
       "id": 3
     },
     {
@@ -333,10 +332,30 @@
       "address": "Doan Hung",
       "phone_number": "0962597415",
       "total_price": "2405000",
-      "status": 3,
+      "status": 0,
       "create_at": "2/24/2022, 4:21:42 AM",
       "update_at": "2/24/2022, 4:21:45 AM",
       "id": 4
+    },
+    {
+      "user_id": 2,
+      "buyer_name": "Khai Dang",
+      "address": "80/47 Xuân Phương",
+      "phone_number": "0962597441",
+      "total_price": "5091000",
+      "status": 3,
+      "update_at": "2/24/2022, 5:08:10 AM",
+      "id": 5
+    },
+    {
+      "user_id": 2,
+      "buyer_name": "Khai Dang",
+      "address": "80/47 Xuân Phương",
+      "phone_number": "0962597441",
+      "total_price": "7466000",
+      "status": 2,
+      "update_at": "2/24/2022, 5:08:57 AM",
+      "id": 6
     }
   ],
   "order_detail": [
@@ -381,6 +400,41 @@
       "price": 2375000,
       "quantity": 1,
       "id": 6
+    },
+    {
+      "product_id": 8,
+      "order_id": 5,
+      "price": 2375000,
+      "quantity": 1,
+      "id": 7
+    },
+    {
+      "product_id": 14,
+      "order_id": 5,
+      "price": 1343000,
+      "quantity": 2,
+      "id": 8
+    },
+    {
+      "product_id": 8,
+      "order_id": 6,
+      "price": 2375000,
+      "quantity": 1,
+      "id": 9
+    },
+    {
+      "product_id": 14,
+      "order_id": 6,
+      "price": 1343000,
+      "quantity": 2,
+      "id": 10
+    },
+    {
+      "product_id": 11,
+      "order_id": 6,
+      "price": 2375000,
+      "quantity": 1,
+      "id": 11
     }
   ]
 }

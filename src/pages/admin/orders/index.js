@@ -267,8 +267,8 @@ const OrderShow = {
     document.querySelector("#received").style.background = "red"
     table_show.forEach(e => {
       e.style.visibility = "hidden"
-      
     })
+    document.querySelector(".received").style.visibility = "visible"
 
     const received = document.querySelector("#received")
     received.addEventListener("click", () => {

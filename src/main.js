@@ -22,6 +22,7 @@ import CommentShow from "./pages/admin/comments";
 import OrderDetailShow from "./pages/admin/orders/detail";
 import CommentDetail from "./pages/admin/comments/detail";
 import Order_manage from "./pages/OrderManage";
+import OrderDetailClient from "./pages/OrderDetailClient";
 
 const route = new Navigo("/", { linksSelector: "a" });
 
@@ -121,6 +122,9 @@ route.on({
     },
     "/order_manage": () => {
         render(Order_manage)
+    },
+    "/order_manage/detail/id=:id": ({data}) => {
+        render(OrderDetailClient, data.id)
     }
 });
 
